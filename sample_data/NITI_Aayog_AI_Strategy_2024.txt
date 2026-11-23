@@ -1,0 +1,200 @@
+NATIONAL STRATEGY FOR ARTIFICIAL INTELLIGENCE - 2024 UPDATE
+NITI Aayog, Government of India
+June 2024
+
+EXECUTIVE SUMMARY
+
+India stands at a critical inflection point in its Artificial Intelligence journey. The 2024 update to the National Strategy for Artificial Intelligence (NSAI) builds upon the foundational 2018 strategy, incorporating lessons learned, technological advances, and the imperative for sovereign AI capabilities. This strategy envisions India as a global AI leader that develops and deploys AI solutions for social empowerment, economic growth, and national security.
+
+The AI Mission, approved by the Union Cabinet in March 2024 with an outlay of ₹10,300 crore over five years (2024-2029), serves as the implementation vehicle for this strategy. The Mission operates through seven pillars: Compute Infrastructure, Foundational Models, Datasets, Applications, Skilling, Governance, and International Partnerships.
+
+CHAPTER 1: STRATEGIC CONTEXT AND VISION
+
+1.1 Global AI Landscape
+The global AI market is projected to reach $1.8 trillion by 2030, growing at a CAGR of 37.3% from 2023. Generative AI alone could add $2.6-$4.4 trillion annually to the global economy. Nations are racing to build sovereign AI capabilities - the USA with CHIPS Act, EU with AI Act, China with Next Generation AI Plan. India must secure its strategic autonomy in this critical technology.
+
+1.2 India's AI Journey So Far
+Since 2018, India has made significant progress:
+- Established Centres of Excellence in AI at IITs and IIITs
+- Launched National AI Portal (INDIAai) with 500,000+ registered users
+- Created National Data Governance Framework Policy (2023)
+- Enacted Digital Personal Data Protection Act (2023)
+- Ranked 1st in AI Skill Penetration (Stanford AI Index 2023)
+- 16% of world's AI talent pool originates from India
+
+1.3 Vision Statement
+"To establish India as a global leader in Artificial Intelligence by developing sovereign AI capabilities that drive inclusive growth, enhance governance efficiency, and solve societal challenges at population scale, while ensuring ethical, responsible, and trusted AI deployment."
+
+CHAPTER 2: PRIORITY SECTORS AND APPLICATIONS
+
+2.1 Healthcare AI
+India faces a doctor-patient ratio of 1:834 (WHO norm: 1:1000). AI can bridge this gap through:
+- AI-assisted radiology: TB screening, cancer detection, retinal scanning
+- Telemedicine enhancement: AI triage, vernacular language support
+- Drug discovery: Molecular modeling for neglected tropical diseases
+- Public health surveillance: Outbreak prediction, vaccine distribution optimization
+Target: Deploy AI diagnostics in 50,000 Health & Wellness Centres by 2029.
+
+2.2 Agriculture AI
+With 54.6% workforce in agriculture contributing 18.3% to GDP, AI applications include:
+- Precision farming: Soil health analysis, crop advisories, pest prediction
+- Supply chain optimization: Price forecasting, cold chain management, waste reduction
+- Credit access: Alternative data scoring for smallholder farmers
+- Climate resilience: Drought forecasting, crop insurance automation
+Target: Reach 10 crore farmers with AI advisories by 2027.
+
+2.3 Education and Skilling
+- Personalized learning: Adaptive content in 22 scheduled languages
+- Teacher augmentation: Automated assessment, content generation
+- Vocational training: AR/VR simulators for industrial skills
+- AI curriculum: Mandatory AI literacy from Grade 6 onwards
+Target: Train 10 lakh AI professionals by 2029 (current: ~4.16 lakh).
+
+2.4 Smart Cities and Urban Governance
+- Traffic management: AI signal optimization, incident detection
+- Waste management: Route optimization, recycling sorting
+- Public safety: Crowd monitoring, emergency response coordination
+- Service delivery: Chatbots for municipal services, grievance redressal
+Target: 100 smart cities with AI-enabled command centres by 2029.
+
+2.5 Governance and Public Service Delivery
+- Direct Benefit Transfer: Fraud detection, exclusion error correction
+- Tax administration: Automated scrutiny, taxpayer assistance
+- Judicial efficiency: Case prioritization, legal research assistance
+- Regulatory compliance: Automated monitoring, risk-based inspections
+Target: 90% citizen services AI-enabled by 2029.
+
+CHAPTER 3: AI MISSION - IMPLEMENTATION FRAMEWORK
+
+3.1 Pillar 1: Compute Infrastructure (₹4,564 crore)
+- Establish 10,000+ GPU sovereign compute cluster
+- Tiered access: Research (free), Startups (subsidized), Industry (market rate)
+- Green AI mandate: 50% renewable energy for compute by 2027
+- Edge compute deployment for low-latency applications
+
+3.2 Pillar 2: Foundational Models (₹1,971 crore)
+- Develop Indic-language LLMs (22 languages, 100B+ parameters)
+- Domain-specific models: Healthcare, Agriculture, Legal, Finance
+- Open-source release strategy with responsible use licenses
+- Benchmarking framework for Indian context evaluation
+
+3.3 Pillar 3: Datasets (₹826 crore)
+- National Data Platform: Curated, annotated, rights-cleared datasets
+- Sectoral data exchanges: Health, Agriculture, Education, Finance
+- Synthetic data generation for sensitive domains
+- Data quality standards and interoperability protocols
+
+3.4 Pillar 4: Applications (₹1,240 crore)
+- Mission-mode projects in 5 priority sectors
+- Challenge grants for startups and academia
+- Public procurement preference for Made-in-India AI
+- Impact measurement framework with citizen feedback loops
+
+3.5 Pillar 5: Skilling (₹689 crore)
+- AI curriculum integration: School to PhD levels
+- Industry partnerships: Apprenticeships, faculty exchange
+- Reskilling programs for displaced workers
+- Global talent attraction: AI Research Chairs, visiting fellowships
+
+3.6 Pillar 6: Governance (₹412 crore)
+- AI Regulatory Sandbox for safe innovation
+- Algorithmic transparency requirements for high-risk AI
+- Bias audit mandate for public sector AI systems
+- Incident reporting and liability framework
+- Alignment with DPDP Act 2023 and upcoming Digital India Act
+
+3.7 Pillar 7: International Partnerships (₹598 crore)
+- Global Partnership on AI (GPAI) leadership
+- Bilateral AI cooperation: US, EU, Japan, Israel, UAE
+- Standardization participation: ISO/IEC JTC1, BIS
+- Development assistance: AI for Global South
+
+CHAPTER 4: INVESTMENT AND FINANCIAL ARCHITECTURE
+
+4.1 Total Outlay: ₹10,300 crore (2024-2029)
+| Pillar | Allocation (₹ crore) | Percentage |
+|--------|---------------------|------------|
+| Compute Infrastructure | 4,564 | 44.3% |
+| Foundational Models | 1,971 | 19.1% |
+| Datasets | 826 | 8.0% |
+| Applications | 1,240 | 12.0% |
+| Skilling | 689 | 6.7% |
+| Governance | 412 | 4.0% |
+| International Partnerships | 598 | 5.8% |
+| **Total** | **10,300** | **100%** |
+
+4.2 Funding Mechanism
+- Central Government: 60% (₹6,180 crore)
+- State Governments: 20% (₹2,060 crore) - matching grants
+- Industry Consortium: 15% (₹1,545 crore) - matched funding
+- International/Other: 5% (₹515 crore)
+
+4.3 Financial Governance
+- Mission Directorate under NITI Aayog CEO
+- Quarterly financial reviews by Empowered Committee
+- Independent audit by CAG annually
+- Transparent dashboard for public fund tracking
+
+CHAPTER 5: GOVERNANCE AND ETHICAL FRAMEWORK
+
+5.1 Principles for Responsible AI
+1. **Inclusivity**: AI must serve all citizens, especially marginalized
+2. **Transparency**: Algorithmic decisions explainable and auditable
+3. **Accountability**: Clear liability chains for AI outcomes
+4. **Privacy**: Data minimization, purpose limitation, consent
+5. **Security**: Robustness against adversarial attacks
+6. **Fairness**: Bias detection and mitigation mandatory
+7. **Human Agency**: Human-in-the-loop for high-stakes decisions
+8. **Sustainability**: Environmental impact assessment for large models
+
+5.2 Regulatory Approach
+- Risk-based classification: Unacceptable, High, Limited, Minimal risk
+- High-risk AI: Mandatory conformity assessment, registration
+- Sectoral regulators: Health (CDSCO), Finance (RBI), Telecom (TRAI)
+- Self-certification for low-risk with random audits
+- Sandbox for innovation with regulatory guidance
+
+5.3 Data Governance
+- DPDP Act 2023 compliance mandatory for all AI systems
+- Data localization for sensitive personal data
+- Cross-border transfer adequacy framework
+- Data fiduciary obligations for AI developers
+
+CHAPTER 6: MONITORING AND EVALUATION
+
+6.1 Key Performance Indicators
+| Indicator | Baseline (2024) | Target (2029) |
+|-----------|----------------|---------------|
+| AI Compute Capacity (PFLOPs) | 5 | 100+ |
+| Indic LLMs Deployed | 0 | 5+ |
+| Curated Datasets Published | 50 | 500+ |
+| AI Professionals Trained | 4.16 lakh | 10 lakh |
+| Farmers Reached (AI advisories) | 2 crore | 10 crore |
+| Health Centres with AI | 5,000 | 50,000 |
+| AI Startups Incubated | 200 | 2,000 |
+| Patents Filed (AI) | 1,200/yr | 10,000/yr |
+
+6.2 Impact Assessment Framework
+- Quarterly dashboard updates (public)
+- Annual independent evaluation (third-party)
+- Mid-term review (2027) with course correction
+- Citizen satisfaction surveys (annual)
+- Economic impact study (biennial)
+
+CHAPTER 7: CONCLUSION
+
+The 2024 National Strategy for Artificial Intelligence represents India's commitment to shaping the global AI future rather than merely adapting to it. With the AI Mission's ₹10,300 crore investment, sovereign compute infrastructure, foundational models in Indian languages, and a governance framework rooted in democratic values, India is positioned to demonstrate that AI can be a force for inclusive development at population scale.
+
+Success requires sustained political will, agile institutions, industry-academia-government collaboration, and continuous citizen engagement. The strategy is not a static document but a living framework that will evolve with technology and society.
+
+India's AI moment is now. The choices we make today will determine whether the next billion Indians benefit from AI as empowered creators and informed users, or remain passive subjects of technological change. This strategy chooses the former.
+
+---
+
+ANNEXURES
+
+Annexure A: Glossary of Terms
+Annexure B: International AI Policy Comparison Matrix
+Annexure C: Detailed Project Proposals by Sector
+Annexure D: Stakeholder Consultation Summary (500+ participants)
+Annexure E: Alignment with UN SDGs and India's Viksit Bharat 2047

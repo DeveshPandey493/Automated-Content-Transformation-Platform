@@ -1,0 +1,99 @@
+{
+  "dataset_name": "ACTP_Curated_Benchmark_v1.0",
+  "description": "Curated public documents with human-quality reference outputs for all 4 transformation formats",
+  "version": "1.0",
+  "created": "2026-11-15",
+  "source_types": ["NITI Aayog", "WHO", "Government of India", "MeitY"],
+  "documents": [
+    {
+      "id": "doc_001",
+      "title": "National Strategy for Artificial Intelligence 2024 Update",
+      "source": "NITI Aayog",
+      "date": "2024-06-01",
+      "url": "https://niti.gov.in/sites/default/files/2024-06/NSAI_2024_Update.pdf",
+      "pages": 42,
+      "words": 18500,
+      "language": "en",
+      "gold_facts": [
+        "AI Mission outlay: ₹10,300 crore over five years (2024-2029)",
+        "Compute infrastructure allocation: ₹4,564 crore (44.3%)",
+        "Target: 10,000+ GPU sovereign cluster delivering 100+ PFLOPs by 2029",
+        "Target: 5+ Indic-language LLMs (22 languages, 100B+ parameters)",
+        "Target: 50,000 Health & Wellness Centres with AI diagnostics by 2029",
+        "Target: 10 crore farmers reached with AI advisories by 2027",
+        "Target: 10 lakh AI professionals trained by 2029",
+        "Target: 100 smart cities with AI command centres by 2029",
+        "India ranks 1st in AI Skill Penetration (Stanford AI Index 2023)",
+        "16% of world's AI talent pool originates from India",
+        "Digital Personal Data Protection Act 2023 compliance mandatory",
+        "Global AI market projected at $1.8 trillion by 2030 (37.3% CAGR)",
+        "Generative AI could add $2.6-4.4 trillion annually to global economy"
+      ],
+      "gold_entities": [
+        "NITI Aayog",
+        "Government of India",
+        "AI Mission",
+        "Digital Personal Data Protection Act 2023",
+        "Stanford AI Index",
+        "Global Partnership on AI (GPAI)",
+        "WHO",
+        "DPDP Act"
+      ],
+      "gold_numbers": [
+        "₹10,300 crore",
+        "₹4,564 crore",
+        "₹1,971 crore",
+        "₹826 crore",
+        "₹1,240 crore",
+        "₹689 crore",
+        "₹412 crore",
+        "₹598 crore",
+        "10,000+",
+        "100+",
+        "5+",
+        "22",
+        "100B+",
+        "50,000",
+        "10 crore",
+        "10 lakh",
+        "100",
+        "500+",
+        "2 crore",
+        "4.16 lakh",
+        "200",
+        "2,000",
+        "1,200",
+        "10,000",
+        "5",
+        "1:834",
+        "1:1000",
+        "$1.8 trillion",
+        "2030",
+        "37.3%",
+        "$2.6-4.4 trillion"
+      ],
+      "reference_outputs": {
+        "EXECUTIVE_SUMMARY": "sample_data/reference_outputs/executive_summary_ref.md",
+        "PUBLIC_ADVISORY": "sample_data/reference_outputs/public_advisory_ref.md",
+        "SOCIAL_POST": "sample_data/reference_outputs/social_posts_ref.md",
+        "FAQ": "sample_data/reference_outputs/faq_ref.md"
+      }
+    }
+  ],
+  "evaluation_metrics": {
+    "rouge": ["rouge_1_f1", "rouge_2_f1", "rouge_l_f1"],
+    "bert_score": "bert_score_f1",
+    "key_fact_coverage": "key_fact_coverage",
+    "entity_coverage": "entity_coverage",
+    "numerical_coverage": "numerical_coverage",
+    "controllability_score": "controllability_score",
+    "factual_consistency_score": "factual_consistency_score"
+  },
+  "generation_paradigms": [
+    "LOCAL_EXTRACTIVE_TFIDF",
+    "LOCAL_EXTRACTIVE_TEXTRANK",
+    "LOCAL_SEQ2SEQ_FLAN_T5_BASE",
+    "LOCAL_SEQ2SEQ_BART_BASE",
+    "GROQ_INSTRUCTION_LLM"
+  ]
+}

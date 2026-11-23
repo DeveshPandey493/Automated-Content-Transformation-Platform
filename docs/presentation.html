@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACTP — Gen AI Content Transformation Platform (SIH 2026)</title>
+  <style>
+    :root {
+      --bg: #0c1322;
+      --card-bg: #161e31;
+      --border: #28354f;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+      --cyan: #38bdf8;
+      --indigo: #818cf8;
+      --green: #34d399;
+      --amber: #fbbf24;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .slide-deck {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 60px;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;
+      max-height: 720px;
+      flex-direction: column;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header-cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+      flex: 1;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .card-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--green);
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      text-transform: uppercase;
+    }
+    .card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .card li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 18px;
+    }
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .card li strong {
+      color: var(--text);
+    }
+    .quote-banner {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 12px;
+      padding: 18px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .formula-banner {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* Controls bar */
+    .controls {
+      height: 54px;
+      border-top: 1px solid var(--border);
+      background: rgba(12, 19, 34, 0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      user-select: none;
+    }
+    .counter {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: var(--border);
+      color: var(--cyan);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-deck">
+
+    <!-- SLIDE 1 -->
+    <div class="slide active">
+      <div style="margin: auto 0;">
+        <div class="header-cat">SMART INDIA HACKATHON 2026 — PROBLEM STATEMENT SOLUTION</div>
+        <h1 style="font-size: 46px; font-weight: 900; line-height: 1.15; margin-bottom: 16px;">
+          Gen AI Platform for Automated<br><span style="color: var(--cyan);">Content Transformation</span>
+        </h1>
+        <p style="font-size: 18px; color: var(--indigo); font-weight: 600; margin-bottom: 36px;">
+          One Source of Truth · Multiple Audiences · Multiple Formats · Verifiable Factual Accuracy
+        </p>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 900px;">
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 10px;">
+            <strong style="color: var(--cyan);">3 Generation Paradigms:</strong> Local Extractive (TF-IDF & TextRank) · Local Seq2Seq Neural (FLAN-T5 & BART) · Cloud LLM (Groq SDK)
+          </p>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <strong style="color: var(--green);">Key Differentiator:</strong> Independent multi-method factual verification engine mapping claims back to exact source document chunks with page numbers and offsets.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="header-cat">THE CHALLENGE</div>
+      <div class="slide-title">The Public & Enterprise Communication Bottleneck</div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-title">1. Multi-Audience Chasm</div>
+          <div class="card-badge" style="color: var(--amber); border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.1);">Communication Gap</div>
+          <ul>
+            <li>A single 50-page policy whitepaper must reach vastly different audiences.</li>
+            <li><strong>Ministers & Leadership</strong> need a concise strategic brief with key metrics.</li>
+            <li><strong>Citizens</strong> need clear, actionable advisories without bureaucratic jargon.</li>
+            <li><strong>Media & Youth</strong> require punchy social media highlights.</li>
+            <li><strong>Support teams</strong> need evidence-grounded FAQ answers.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--red);">2. The Hallucination Danger</div>
+          <div class="card-badge" style="color: var(--red); border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.1);">Critical Trust Deficit</div>
+          <ul>
+            <li>Generic LLMs fabricate numbers, dates, official policies, and health advisories.</li>
+            <li>Hallucinating an emergency hotline or medical instruction creates public harm.</li>
+            <li>Black-box summaries lack sentence-to-source traceability.</li>
+            <li>Automated evaluations rely on the LLM's own self-assessment, creating circular bias.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--indigo);">3. Deployment Inflexibility</div>
+          <div class="card-badge" style="color: var(--indigo); border-color: rgba(129, 140, 248, 0.4); background: rgba(129, 140, 248, 0.1);">Operational Risk</div>
+          <ul>
+            <li>Most platforms strictly require continuous cloud API connectivity.</li>
+            <li>Air-gapped agencies (defense, intelligence, healthcare) require <strong>100% offline runs</strong>.</li>
+            <li>GPU memory constraints trigger sudden out-of-memory crashes.</li>
+            <li>No empirical framework exists to fairly benchmark extractive vs neural approaches.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <div class="header-cat">THE SOLUTION</div>
+      <div class="slide-title">ACTP: Grounded Content Transformation Engine</div>
+      <div class="quote-banner">
+        "One source of truth. Multiple audiences. Multiple communication formats. Verifiable factual accuracy."
+      </div>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-title">1. Ingestion</div>
+          <div class="card-badge">Universal Formats</div>
+          <ul>
+            <li>PDF (PyMuPDF with page metadata).</li>
+            <li>DOCX (python-docx with headings).</li>
+            <li>TXT & Raw text paste.</li>
+            <li>Web URLs with SSRF DNS guard.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">2. 3 Paradigms</div>
+          <div class="card-badge">Hybrid AI</div>
+          <ul>
+            <li>Local Extractive (Zero Hallucination).</li>
+            <li>Local Neural Seq2Seq (FLAN-T5 & BART).</li>
+            <li>Cloud LLM (Groq SDK high throughput).</li>
+            <li>Independent offline executability.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">3. Verification</div>
+          <div class="card-badge">Grounding Engine</div>
+          <ul>
+            <li>Atomic claim extraction.</li>
+            <li>TF-IDF semantic evidence retrieval.</li>
+            <li>Multi-method fact classifier (5 statuses).</li>
+            <li>Mathematical Consistency Score (FCS).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">4. Evaluation</div>
+          <div class="card-badge">Empirical Metrics</div>
+          <ul>
+            <li>ROUGE-1/2/L & BERTScore.</li>
+            <li>Key Fact, Entity, Number recall.</li>
+            <li>Controllability scoring.</li>
+            <li>1-click export to PDF, DOCX, MD, TXT.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+      <div class="header-cat">FORMAT SPECIALIZATION</div>
+      <div class="slide-title">Four Target Communication Formats</div>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-title">Executive Summary</div>
+          <div class="card-badge">Decision Makers</div>
+          <ul>
+            <li>Overview & Strategic Findings.</li>
+            <li>Essential empirical metrics & dates.</li>
+            <li>Implications for policy and operations.</li>
+            <li><strong>Guardrail:</strong> Recommended actions permitted ONLY when corroborated by source.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Public Advisory</div>
+          <div class="card-badge">Citizen Safety</div>
+          <ul>
+            <li>Clear Title & Target Audience.</li>
+            <li>Situation summary & verified facts.</li>
+            <li>Actionable citizen precautions.</li>
+            <li><strong>Guardrail:</strong> NEVER invent emergency numbers, contacts, or official advisories.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Social Media Posts</div>
+          <div class="card-badge">Public Outreach</div>
+          <ul>
+            <li>LinkedIn: Structured overview with bulleted metrics.</li>
+            <li>X (Twitter): Concise thread with verified hashtags.</li>
+            <li>Impactful headlines.</li>
+            <li><strong>Guardrail:</strong> No clickbait or unsubstantiated hype.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Fact-Based FAQ</div>
+          <div class="card-badge">Query Resolution</div>
+          <ul>
+            <li>Targeted Citizen Questions.</li>
+            <li>Evidence-grounded Answers.</li>
+            <li>Source snippet attribution.</li>
+            <li><strong>Guardrail:</strong> Explicitly states if source has insufficient information.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+      <div class="header-cat">AI MODEL STRATEGY</div>
+      <div class="slide-title">Three Generation Paradigms Benchmarked</div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-title" style="color: var(--green);">1. Local Extractive (Baseline)</div>
+          <div class="card-badge" style="color: var(--green); border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.1);">100% Offline · Zero Hallucination</div>
+          <ul>
+            <li><strong>Algorithms:</strong> TF-IDF Centroid Ranking & TextRank Sentence Graph PageRank.</li>
+            <li><strong>Hardware:</strong> 100% CPU, 0 MB VRAM, 0 tokens, instant execution.</li>
+            <li><strong>Factual Accuracy:</strong> Verbatim source sentences guarantee 100% factual grounding.</li>
+            <li><strong>Trade-off:</strong> Rigid phrasing; lacks human abstractive rewrites.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--indigo);">2. Local Seq2Seq Transformers</div>
+          <div class="card-badge" style="color: var(--indigo); border-color: rgba(129, 140, 248, 0.4); background: rgba(129, 140, 248, 0.1);">Local Neural · Air-Gapped</div>
+          <ul>
+            <li><strong>Models:</strong> <code>google/flan-t5-base</code> (945 MB) & <code>facebook/bart-base</code> (532 MB).</li>
+            <li><strong>Hardware:</strong> CUDA fp16 GPU acceleration with dynamic memory tracking.</li>
+            <li><strong>Innovation:</strong> Automatic CUDA failure recovery -> reloads cached weights on CPU.</li>
+            <li><strong>Trade-off:</strong> Requires local GPU/CPU compute budget.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--cyan);">3. Cloud Instruction LLM</div>
+          <div class="card-badge" style="color: var(--cyan); border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1);">High-Throughput Synthesis</div>
+          <ul>
+            <li><strong>Model:</strong> Groq SDK inference (<code>openai/gpt-oss-120b</code>).</li>
+            <li><strong>Speed:</strong> 300+ tokens/second ultra-low latency generation.</li>
+            <li><strong>Innovation:</strong> Extractive context bounding (3,500 words) prevents rate-limit blowouts on long dossiers.</li>
+            <li><strong>Telemetry:</strong> Real-time tracking of input tokens, output tokens, latency, cost.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+      <div class="header-cat">SYSTEM ARCHITECTURE</div>
+      <div class="slide-title">Modular, Decoupled System Design</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-title">Presentation & API Gateway</div>
+          <div class="card-badge">Next.js 14 + FastAPI</div>
+          <ul>
+            <li><strong>Frontend:</strong> Next.js App Router, TypeScript, Tailwind CSS, Recharts visualizer.</li>
+            <li><strong>7 Workspaces:</strong> Dashboard, Library, Studio, Review, Models, Evaluation, Datasets.</li>
+            <li><strong>API Gateway:</strong> Thin route handlers; Pydantic v2 validation contracts.</li>
+            <li><strong>35 REST Endpoints:</strong> OpenAPI documentation live at <code>/docs</code>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Model Registry & Persistence</div>
+          <div class="card-badge">Decoupled Architecture</div>
+          <ul>
+            <li><strong>BaseTransformationModel:</strong> Common contract (load, unload, generate, metadata).</li>
+            <li><strong>ModelRegistry:</strong> Thread-safe singleton with fuzzy model discovery.</li>
+            <li><strong>Dual-Mode DB:</strong> PostgreSQL 16 primary with automatic SQLite fallback.</li>
+            <li><strong>10 Relational Models:</strong> Complete cascade traceability from document to claim.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+      <div class="header-cat">THE KEY DIFFERENTIATOR</div>
+      <div class="slide-title">Multi-Method Factual Verification Engine</div>
+      <div class="formula-banner">
+        Factual Consistency Score (FCS) = [ N_supported + 0.5 × N_partially_supported ] / N_total_claims
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-title">1. Claim Extraction</div>
+          <div class="card-badge">Linguistic Parsing</div>
+          <ul>
+            <li>Extracts numerical facts, percentages, dates.</li>
+            <li>Isolates named entities, locations, organizations.</li>
+            <li>Captures policy mandates and cause-effect claims.</li>
+            <li>Deconstructs output into testable atomic assertions.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">2. Evidence Retrieval</div>
+          <div class="card-badge">Semantic Search</div>
+          <ul>
+            <li>TF-IDF vector cosine similarity across source chunks.</li>
+            <li>Ranks top-K candidate supporting passages.</li>
+            <li>Preserves exact document ID, chunk ID, page number, and character offsets.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">3. Multi-Method Verifier</div>
+          <div class="card-badge">5 Status Classifications</div>
+          <ul>
+            <li><strong style="color: var(--green);">Supported (Green):</strong> Direct factual alignment.</li>
+            <li><strong style="color: var(--amber);">Partially Supported:</strong> Main assertion corroborated.</li>
+            <li><strong style="color: var(--red);">Contradicted:</strong> Explicit conflict with source.</li>
+            <li><strong style="color: #94a3b8;">Human Review:</strong> Inferential ambiguity flagged.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+      <div class="header-cat">SCIENTIFIC RIGOR</div>
+      <div class="slide-title">5-Dimensional Evaluation Framework</div>
+      <div class="grid grid-5">
+        <div class="card">
+          <div class="card-title" style="font-size: 15px;">1. Similarity</div>
+          <div class="card-badge">ROUGE & BERT</div>
+          <ul>
+            <li>ROUGE-1 F1</li>
+            <li>ROUGE-2 F1</li>
+            <li>ROUGE-L F1</li>
+            <li>BERTScore token similarity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 15px;">2. Coverage</div>
+          <div class="card-badge">Recall Ratios</div>
+          <ul>
+            <li>Gold key fact recall</li>
+            <li>Named entity recall</li>
+            <li>Numerical preservation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 15px;">3. Grounding</div>
+          <div class="card-badge">Verification</div>
+          <ul>
+            <li>FCS Score (0.0 to 1.0)</li>
+            <li>Hallucination rate</li>
+            <li>Source chunk linkage</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 15px;">4. Control</div>
+          <div class="card-badge">Constraints</div>
+          <ul>
+            <li>Length compliance</li>
+            <li>Required keywords</li>
+            <li>Prohibited phrases</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="font-size: 15px;">5. Efficiency</div>
+          <div class="card-badge">Telemetry</div>
+          <ul>
+            <li>Latency (ms)</li>
+            <li>Tokens/second</li>
+            <li>VRAM peak</li>
+            <li>Estimated cost ($)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide">
+      <div class="header-cat">SECURITY & RELIABILITY</div>
+      <div class="slide-title">Enterprise Security & High Availability</div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-title" style="color: var(--cyan);">1. SSRF Defense Guard</div>
+          <div class="card-badge">Boundary Protection</div>
+          <ul>
+            <li>DNS resolution prior to connecting to user URLs.</li>
+            <li>Strictly blocks loopback (<code>127.0.0.1</code>, <code>localhost</code>).</li>
+            <li>Blocks RFC 1918 private subnets (<code>10.x</code>, <code>172.16-31.x</code>, <code>192.168.x</code>).</li>
+            <li>Blocks Cloud metadata endpoints (<code>169.254.169.254</code>).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--indigo);">2. Prompt Injection Guard</div>
+          <div class="card-badge">Data Isolation</div>
+          <ul>
+            <li>Source files treated as untrusted external data.</li>
+            <li>Wrapped in explicit <code>&lt;source_document&gt;</code> boundary tokens.</li>
+            <li>System instructions forbid models from executing embedded commands.</li>
+            <li>API keys server-side only; never leaked to client.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--green);">3. Hardware Resilience</div>
+          <div class="card-badge">Fault Tolerance</div>
+          <ul>
+            <li>Automatic CUDA failure recovery reload on CPU.</li>
+            <li>Extractive context reducer for long documents on Groq.</li>
+            <li>Dual-mode database engine (PostgreSQL -> SQLite).</li>
+            <li>Independent offline executability.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide">
+      <div class="header-cat">DEMO WALKTHROUGH</div>
+      <div class="slide-title">SIH 2026 Jury Demonstration Flow</div>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-title">1. Ingest</div>
+          <div class="card-badge">Traceable Chunks</div>
+          <ul>
+            <li>Upload real NITI Aayog AI Strategy dossier.</li>
+            <li>Inspect chunk visualizer: page numbers, char offsets.</li>
+            <li>SHA-256 integrity hash verification.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">2. Transform</div>
+          <div class="card-badge">Multi-Format</div>
+          <ul>
+            <li>Configure: Executive Summary & Public Advisory.</li>
+            <li>Set target: Senior Leadership / Citizens.</li>
+            <li>Select Extractive, FLAN-T5 & Groq simultaneously.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">3. Verify</div>
+          <div class="card-badge">Factual Audit</div>
+          <ul>
+            <li>Review side-by-side output comparison.</li>
+            <li>Inspect FCS scorecard (FCS: 92%).</li>
+            <li>Click green claims to highlight exact source chunks.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">4. Export</div>
+          <div class="card-badge">Multi-Format</div>
+          <ul>
+            <li>Edit text inline; capture version branch.</li>
+            <li>Submit 5-star human review rating.</li>
+            <li>1-click export to formatted PDF & DOCX.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div class="slide">
+      <div class="header-cat">IMPACT & ROADMAP</div>
+      <div class="slide-title">Societal Impact & Future Milestones</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-title">Societal & Governance Impact</div>
+          <div class="card-badge">Empirical Value</div>
+          <ul>
+            <li><strong>Zero-Hallucination Governance:</strong> Officials and citizens receive reliable information with traceable footnotes.</li>
+            <li><strong>10x Dissemination Acceleration:</strong> Transforming hours of manual drafting into seconds of verified synthesis.</li>
+            <li><strong>Democratized Access:</strong> Multi-audience tailoring bridges the literacy and technical communication divide.</li>
+            <li><strong>100% Offline Capability:</strong> Operates inside secure, air-gapped public institutions without cloud reliance.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Future Technical Roadmap</div>
+          <div class="card-badge">Future Horizons</div>
+          <ul>
+            <li><strong>Multilingual Bhashini API:</strong> Translation into 22 scheduled Indian official languages.</li>
+            <li><strong>Speech-to-Speech Accessibility:</strong> Generating audio advisories for rural radio and IVR citizen helplines.</li>
+            <li><strong>Tesseract OCR Pipeline:</strong> Digitizing historical and scanned state gazette archives.</li>
+            <li><strong>Enterprise CMS Connectors:</strong> Direct publishing hooks into government portals and digital noticeboards.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="counter" id="slide-counter">Slide 1 of 11</div>
+    <div class="btn-group">
+      <button onclick="prevSlide()">← Previous</button>
+      <button onclick="nextSlide()">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slide-counter');
+    let current = 0;
+
+    function update() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === current);
+      });
+      counter.innerText = `Slide ${current + 1} of ${slides.length}`;
+    }
+
+    function nextSlide() {
+      if (current < slides.length - 1) {
+        current++;
+        update();
+      }
+    }
+
+    function prevSlide() {
+      if (current > 0) {
+        current--;
+        update();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>
